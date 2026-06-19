@@ -1,7 +1,7 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ArrowLeft, Clock, Heart, MapPin, Phone, Share2, Star } from "lucide-react";
 import { useState } from "react";
-import { getEstablecimiento, establecimientos } from "@/data/establecimientos";
+import { getEstablecimiento, establecimientos, type Establecimiento } from "@/data/establecimientos";
 
 export const Route = createFileRoute("/establecimiento/$id")({
   loader: ({ params }) => {
@@ -42,7 +42,7 @@ export const Route = createFileRoute("/establecimiento/$id")({
 });
 
 function Detalle() {
-  const { establecimiento: e } = Route.useLoaderData();
+  const { establecimiento: e } = Route.useLoaderData() as { establecimiento: Establecimiento };
   const [fav, setFav] = useState(false);
 
   return (
